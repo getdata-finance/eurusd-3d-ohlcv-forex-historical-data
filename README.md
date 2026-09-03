@@ -4,7 +4,7 @@
 
 ### -> [**Download the full EURUSD dataset on getdata.finance**](https://getdata.finance/datasets/eurusd)
 
-**EURUSD 3d OHLCV forex historical data** — ultra high-quality 3d OHLCV for **Euro / US Dollar**. Clean `time, open, high, low, close, volume` CSV for backtesting, algorithmic trading and quantitative research.
+**EURUSD 3d OHLCV forex historical data** — ultra high-quality 3d OHLCV for **Euro / US Dollar**. Clean `datetime, open, high, low, close, volume` CSV for backtesting, algorithmic trading and quantitative research.
 
 ## Table of contents
 
@@ -22,12 +22,12 @@
 ## Why this dataset?
 
 - **Ultra high-quality 3d OHLCV** for **Euro / US Dollar** (Forex)
-- **Clean CSV schema** — `time, open, high, low, close, volume` (no gaps in formatting)
+- **Clean CSV schema** — `datetime, open, high, low, close, volume` (no gaps in formatting)
 - **Free evaluation sample** on GitHub (`3d`) · **11 timeframes** on [getdata.finance](https://getdata.finance/datasets/eurusd) · **6,750** `3d` rows in the full archive
 - Built for **backtesting**, **algorithmic trading** and **quantitative finance** workflows
 - **Weekly refresh** — [getdata.finance](https://getdata.finance) every **Saturday, 8am UTC+0**; GitHub `3d` sample updated in sync
 
-> **Sample on GitHub** · `EURUSD_3d.csv` (18 rows, `2026-07-12` -> `2026-09-01`, 1.25 KB). **Full archive on [getdata.finance](https://getdata.finance/datasets/eurusd)** — **6,750** `3d` rows (full `1m`: 1,685,501), **11 timeframes**, `1971-01-02` -> `2026-09-01`.
+> **Sample on GitHub** · `EURUSD_3d.csv` (19 rows, `2026-07-09` -> `2026-09-01`, 1.32 KB). **Full archive on [getdata.finance](https://getdata.finance/datasets/eurusd)** — **6,750** `3d` rows (full `1m`: 1,685,501), **11 timeframes**, `1971-01-02` -> `2026-09-01`.
 
 ## Download sample
 
@@ -45,9 +45,9 @@ Full archive & live chart on getdata.finance: **[https://getdata.finance/dataset
 |---|--:|---|
 | Instrument | Euro / US Dollar · Forex | Euro / US Dollar · Forex |
 | Timeframes | `3d` (sample) | **11** — 1m · 3m · 5m · 15m · 30m · 1H · 4H · 12H · 1D · 3D · 1W |
-| 3d rows | 18 | **6,750** |
-| Size | 1.25 KB | full ZIP on [getdata.finance](https://getdata.finance/datasets/eurusd) |
-| Period | `2026-07-12` -> `2026-09-01` | `1971-01-02` -> `2026-09-01` |
+| 3d rows | 19 | **6,750** |
+| Size | 1.32 KB | full ZIP on [getdata.finance](https://getdata.finance/datasets/eurusd) |
+| Period | `2026-07-09` -> `2026-09-01` | `1971-01-02` -> `2026-09-01` |
 | File | `EURUSD_3d.csv` | ZIP on [getdata.finance](https://getdata.finance/datasets/eurusd) |
 | Coverage report | — | [EURUSD coverage](https://getdata.finance/coverage/eurusd) |
 | Updates | Weekly (Saturday, 8am UTC+0) — GitHub sample | Weekly (Saturday, 8am UTC+0) — all timeframes |
@@ -73,17 +73,17 @@ First and latest rows from the GitHub sample **`EURUSD_3d.csv`**:
 
 **First rows**
 
-| time | open | high | low | close | volume |
+| datetime | open | high | low | close | volume |
 | --- | --- | --- | --- | --- | --- |
+| 2026-07-09T00:00:00+00:00 | 1.14147 | 1.14456 | 1.13962 | 1.13995 | 159976 |
 | 2026-07-12T00:00:00+00:00 | 1.13995 | 1.14825 | 1.13775 | 1.14601 | 596330 |
 | 2026-07-15T00:00:00+00:00 | 1.14601 | 1.14762 | 1.14202 | 1.14335 | 597814 |
 | 2026-07-18T00:00:00+00:00 | 1.14278 | 1.14495 | 1.1397 | 1.13983 | 253006 |
 | 2026-07-21T00:00:00+00:00 | 1.13983 | 1.14357 | 1.13638 | 1.13692 | 598945 |
-| 2026-07-24T00:00:00+00:00 | 1.13692 | 1.14183 | 1.13605 | 1.13669 | 284341 |
 
 **Last rows**
 
-| time | open | high | low | close | volume |
+| datetime | open | high | low | close | volume |
 | --- | --- | --- | --- | --- | --- |
 | 2026-08-20T00:00:00+00:00 | 1.16782 | 1.17115 | 1.16687 | 1.16761 | 151640 |
 | 2026-08-23T00:00:00+00:00 | 1.16721 | 1.16871 | 1.1651 | 1.16592 | 224293 |
@@ -95,7 +95,7 @@ First and latest rows from the GitHub sample **`EURUSD_3d.csv`**:
 
 | Column | Description |
 | --- | --- |
-| `time` | Bar open timestamp (UTC, ISO-8601). |
+| `datetime` | Bar open timestamp (UTC, ISO-8601). |
 | `open` | Opening price of the candlestick bar. |
 | `high` | Highest price during the bar. |
 | `low` | Lowest price during the bar. |
@@ -103,7 +103,7 @@ First and latest rows from the GitHub sample **`EURUSD_3d.csv`**:
 | `volume` | Tick volume (number of price updates) during the bar. |
 
 ```text
-time,open,high,low,close,volume
+datetime,open,high,low,close,volume
 ```
 
 ## Code examples
@@ -113,8 +113,8 @@ time,open,high,low,close,volume
 ```python
 import pandas as pd
 
-df = pd.read_csv('EURUSD_3d.csv', parse_dates=['time'])
-df.set_index('time', inplace=True)
+df = pd.read_csv('EURUSD_3d.csv', parse_dates=['datetime'])
+df.set_index('datetime', inplace=True)
 print(df.describe())
 ```
 
@@ -124,8 +124,8 @@ print(df.describe())
 import backtrader as bt
 import pandas as pd
 
-df = pd.read_csv('EURUSD_3d.csv', parse_dates=['time'])
-df.set_index('time', inplace=True)
+df = pd.read_csv('EURUSD_3d.csv', parse_dates=['datetime'])
+df.set_index('datetime', inplace=True)
 
 class PandasData(bt.feeds.PandasData):
     params = (('datetime', None), ('open', 'open'), ('high', 'high'),
@@ -143,8 +143,8 @@ cerebro.adddata(PandasData(dataname=df))
 import pandas as pd
 import vectorbt as vbt
 
-df = pd.read_csv('EURUSD_3d.csv', parse_dates=['time'])
-close = df.set_index('time')['close']
+df = pd.read_csv('EURUSD_3d.csv', parse_dates=['datetime'])
+close = df.set_index('datetime')['close']
 fast, slow = vbt.MA.run(close, 10), vbt.MA.run(close, 50)
 entries = fast.ma_crossed_above(slow)
 exits = fast.ma_crossed_below(slow)
